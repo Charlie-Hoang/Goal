@@ -13,7 +13,7 @@ struct MatchesResponse: ResponseModel{
     
     struct Matches: Decodable{
         
-        struct PreviousMatch: Decodable{
+        struct Match: Decodable{
             var date: String?
             var description: String?
             var home: String?
@@ -21,15 +21,9 @@ struct MatchesResponse: ResponseModel{
             var winner: String?
             var highlights: String?
         }
-        struct UpComingMatch: Decodable{
-            var date: String?
-            var description: String?
-            var home: String?
-            var away: String?
-        }
         
-        var previous: [PreviousMatch]?
-        var upcoming: [UpComingMatch]?
+        var previous: [Match]?
+        var upcoming: [Match]?
     }
     
     var matches: Matches?
