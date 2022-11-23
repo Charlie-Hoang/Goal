@@ -25,6 +25,10 @@
 		CB501D85292E7AF700C6F92A /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB501D84292E7AF700C6F92A /* TeamCell.swift */; };
 		CB501D87292E7C8700C6F92A /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB501D86292E7C8600C6F92A /* UIImageView+Ext.swift */; };
 		CB501D8A292E945200C6F92A /* TeamDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB501D89292E945200C6F92A /* TeamDetailVC.swift */; };
+		CB501D8C292E9C3B00C6F92A /* TeamDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB501D8B292E9C3B00C6F92A /* TeamDetailVM.swift */; };
+		CB501D8F292E9E1B00C6F92A /* Define.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB501D8E292E9E1B00C6F92A /* Define.swift */; };
+		CB501D91292EA39400C6F92A /* TeamsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB501D90292EA39400C6F92A /* TeamsVM.swift */; };
+		CB501D93292EA5A000C6F92A /* MatchesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB501D92292EA5A000C6F92A /* MatchesVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +63,10 @@
 		CB501D84292E7AF700C6F92A /* TeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCell.swift; sourceTree = "<group>"; };
 		CB501D86292E7C8600C6F92A /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		CB501D89292E945200C6F92A /* TeamDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailVC.swift; sourceTree = "<group>"; };
+		CB501D8B292E9C3B00C6F92A /* TeamDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailVM.swift; sourceTree = "<group>"; };
+		CB501D8E292E9E1B00C6F92A /* Define.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Define.swift; sourceTree = "<group>"; };
+		CB501D90292EA39400C6F92A /* TeamsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsVM.swift; sourceTree = "<group>"; };
+		CB501D92292EA5A000C6F92A /* MatchesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchesVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +108,7 @@
 		CB501D3D292DD76300C6F92A /* Goal */ = {
 			isa = PBXGroup;
 			children = (
+				CB501D8D292E9E0300C6F92A /* Common */,
 				CB501D77292E25A200C6F92A /* Extensions */,
 				CB501D6E292DD8DE00C6F92A /* ApiService */,
 				CB501D81292E79D200C6F92A /* Screens */,
@@ -164,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				CB501D42292DD76300C6F92A /* MatchesVC.swift */,
+				CB501D92292EA5A000C6F92A /* MatchesVM.swift */,
 				CB501D73292DEA5500C6F92A /* MatchCell.swift */,
 			);
 			path = Matches;
@@ -173,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				CB501D75292DED2000C6F92A /* TeamsVC.swift */,
+				CB501D90292EA39400C6F92A /* TeamsVM.swift */,
 				CB501D84292E7AF700C6F92A /* TeamCell.swift */,
 			);
 			path = Teams;
@@ -182,8 +193,17 @@
 			isa = PBXGroup;
 			children = (
 				CB501D89292E945200C6F92A /* TeamDetailVC.swift */,
+				CB501D8B292E9C3B00C6F92A /* TeamDetailVM.swift */,
 			);
 			path = TeamDetail;
+			sourceTree = "<group>";
+		};
+		CB501D8D292E9E0300C6F92A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				CB501D8E292E9E1B00C6F92A /* Define.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,10 +309,14 @@
 			files = (
 				CB501D87292E7C8700C6F92A /* UIImageView+Ext.swift in Sources */,
 				CB501D7B292E25C400C6F92A /* String+Ext.swift in Sources */,
+				CB501D93292EA5A000C6F92A /* MatchesVM.swift in Sources */,
 				CB501D76292DED2000C6F92A /* TeamsVC.swift in Sources */,
 				CB501D85292E7AF700C6F92A /* TeamCell.swift in Sources */,
+				CB501D91292EA39400C6F92A /* TeamsVM.swift in Sources */,
 				CB501D8A292E945200C6F92A /* TeamDetailVC.swift in Sources */,
 				CB501D43292DD76300C6F92A /* MatchesVC.swift in Sources */,
+				CB501D8F292E9E1B00C6F92A /* Define.swift in Sources */,
+				CB501D8C292E9C3B00C6F92A /* TeamDetailVM.swift in Sources */,
 				CB501D3F292DD76300C6F92A /* AppDelegate.swift in Sources */,
 				CB501D79292E25B800C6F92A /* Date+Ext.swift in Sources */,
 				CB501D70292DD8F900C6F92A /* ApiService.swift in Sources */,

@@ -13,45 +13,25 @@ class MatchesVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var apiService: ApiServiceProtocol!
-    private var arrDataPrevious: [MatchesResponse.Matches.Match] = []
-    private var arrDataUpComing: [MatchesResponse.Matches.Match] = []
+    var viewModel: MatchesVM!
     
-    static func instantiate(apiService: ApiServiceProtocol) -> MatchesVC {
+    static func instantiate(viewModel: MatchesVM) -> MatchesVC {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MatchesVC") as! MatchesVC
-        vc.apiService = apiService
+        vc.viewModel = viewModel
         return vc
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
+        setupViewModel()
+        
+        
     }
 
-    func fetchData(){
-        apiService.fetchMatches { [weak self] result in
-            switch result{
-            case .success(let res):
-                if let _previous = res.matches?.previous{
-                    self?.arrDataPrevious = _previous
-                }
-                if let _upcoming = res.matches?.upcoming{
-                    self?.arrDataUpComing = _upcoming
-                }
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
-            case .failure(_):
-                print("error")
-            }
-            
-            print(result)
-        }
-    }
 }
 //TableView
 extension MatchesVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? arrDataPrevious.count : arrDataUpComing.count
+        return section == 0 ? viewModel.arrDataPrevious.count : viewModel.arrDataUpComing.count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -61,7 +41,7 @@ extension MatchesVC: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MatchCell") as! MatchCell
-        cell.setupCell(model: indexPath.section == 0 ? arrDataPrevious[indexPath.row] : arrDataUpComing[indexPath.row])
+        cell.setupCell(model: indexPath.section == 0 ? viewModel.arrDataPrevious[indexPath.row] : viewModel.arrDataUpComing[indexPath.row])
         cell.delegate = self
         return cell
     }
@@ -82,5 +62,25 @@ extension MatchesVC: MatchCellDelegate{
                }
             }
         }
+    }
+}
+
+//MARK: - Private -
+extension MatchesVC{
+    private func setupViewModel(){
+        tableView.isHidden = true
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.startAnimating()
+        self.view.addSubview(indicator)
+        indicator.center = self.view.convert(self.view.center, from:self.view.superview)
+        
+        viewModel.callback_fetchMatches = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+                indicator.removeFromSuperview()
+                self?.tableView.isHidden = false
+            }
+        }
+        viewModel.fetchData()
     }
 }

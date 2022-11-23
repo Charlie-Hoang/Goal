@@ -36,7 +36,7 @@ enum ApiError: Error{
     case unidentified
 }
 
-public final class ApiService: ApiServiceProtocol{
+final class ApiService: ApiServiceProtocol{
     private var baseURLString: String
     
     init(baseURLString: String){
@@ -71,7 +71,6 @@ extension ApiService{
                 return
             }
             do{
-                print(data)
                 let responseModel = try JSONDecoder().decode(R.self, from: data)
                 completion(Result.success(responseModel))
             }catch{

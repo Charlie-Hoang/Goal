@@ -62,7 +62,7 @@ extension SceneDelegate{
         let window = UIWindow(windowScene: windowScene)
         let tabbarController = UITabBarController()
         
-        tabbarController.viewControllers = [UINavigationController(rootViewController:  MatchesVC.instantiate(apiService: apiService)), UINavigationController(rootViewController:  TeamsVC.instantiate(apiService: apiService))]
+        tabbarController.viewControllers = [UINavigationController(rootViewController:  MatchesVC.instantiate(viewModel: MatchesVM(apiService: apiService))), UINavigationController(rootViewController:  TeamsVC.instantiate(viewModel: TeamsVM(apiService: apiService)))]
         window.rootViewController = tabbarController
         self.window = window
         window.makeKeyAndVisible()

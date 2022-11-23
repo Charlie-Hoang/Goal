@@ -14,44 +14,20 @@ class TeamDetailVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var logo: UIImageView!
     
-    var team: TeamsResponse.Team!
-    var apiService: ApiServiceProtocol!
-    private var arrDataPrevious: [MatchesResponse.Matches.Match] = []
-    private var arrDataUpComing: [MatchesResponse.Matches.Match] = []
+    var viewModel: TeamDetailVM!
     
-    static func instantiate(apiService: ApiServiceProtocol, team: TeamsResponse.Team) -> TeamDetailVC {
+    static func instantiate(viewModel: TeamDetailVM) -> TeamDetailVC {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TeamDetailVC") as! TeamDetailVC
-        vc.apiService = apiService
-        vc.team = team
+        vc.viewModel = viewModel
         return vc
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = team.name
-        if let _logo = team.logo, let _url = URL(string: _logo){
+        setupViewModel()
+        self.title = viewModel.team.name
+        if let _logo = viewModel.team.logo, let _url = URL(string: _logo){
             logo.load(url: _url)
-        }
-        fetchData()
-    }
-    func fetchData(){
-        apiService.fetchMatches { [weak self] result in
-            switch result{
-            case .success(let res):
-                if let _previous = res.matches?.previous{
-                    self?.arrDataPrevious = _previous.filter{$0.home == self?.team.name || $0.away == self?.team.name}
-                }
-                if let _upcoming = res.matches?.upcoming{
-                    self?.arrDataUpComing = _upcoming.filter{$0.home == self?.team.name || $0.away == self?.team.name}
-                }
-                DispatchQueue.main.async {
-                    self?.tableView.reloadData()
-                }
-            case .failure(_):
-                print("error")
-            }
-            
-            print(result)
         }
     }
 
@@ -59,7 +35,7 @@ class TeamDetailVC: UIViewController {
 //TableView
 extension TeamDetailVC: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? arrDataPrevious.count : arrDataUpComing.count
+        return section == 0 ? viewModel.arrDataPrevious.count : viewModel.arrDataUpComing.count
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -69,7 +45,7 @@ extension TeamDetailVC: UITableViewDelegate, UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MatchCell") as! MatchCell
-        cell.setupCell(model: indexPath.section == 0 ? arrDataPrevious[indexPath.row] : arrDataUpComing[indexPath.row])
+        cell.setupCell(model: indexPath.section == 0 ? viewModel.arrDataPrevious[indexPath.row] : viewModel.arrDataUpComing[indexPath.row])
         cell.delegate = self
         return cell
     }
@@ -90,5 +66,16 @@ extension TeamDetailVC: MatchCellDelegate{
                }
             }
         }
+    }
+}
+//MARK: - Private -
+extension TeamDetailVC{
+    private func setupViewModel(){
+        viewModel.callback_fetchMatches = { [weak self] in
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
+        viewModel.fetchData()
     }
 }
