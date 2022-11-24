@@ -237,6 +237,15 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <view alpha="0.30000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CsT-NI-qFx">
+                                                    <rect key="frame" x="8" y="0.0" width="398" height="96"/>
+                                                    <color key="backgroundColor" systemColor="separatorColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="16"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tox-03-Ocm">
                                                     <rect key="frame" x="20" y="19" width="66" height="66"/>
                                                     <constraints>
@@ -292,13 +301,17 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="CsT-NI-qFx" firstAttribute="top" secondItem="bwp-nc-RZ3" secondAttribute="top" id="MBt-zu-oLZ"/>
                                                 <constraint firstItem="tox-03-Ocm" firstAttribute="leading" secondItem="bwp-nc-RZ3" secondAttribute="leadingMargin" id="R3s-9e-cTp"/>
                                                 <constraint firstItem="mMW-AH-d3G" firstAttribute="centerY" secondItem="bwp-nc-RZ3" secondAttribute="centerY" id="SMO-cz-peU"/>
+                                                <constraint firstItem="CsT-NI-qFx" firstAttribute="leading" secondItem="bwp-nc-RZ3" secondAttribute="leading" constant="8" id="c2l-eO-UvU"/>
                                                 <constraint firstItem="qUb-lS-QSJ" firstAttribute="centerY" secondItem="bwp-nc-RZ3" secondAttribute="centerY" id="iF3-Yw-hdX"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="mMW-AH-d3G" secondAttribute="trailing" constant="8" id="iaL-Yk-IUx"/>
                                                 <constraint firstItem="tox-03-Ocm" firstAttribute="top" secondItem="bwp-nc-RZ3" secondAttribute="topMargin" constant="8" id="ihb-Qm-Q47"/>
                                                 <constraint firstItem="qUb-lS-QSJ" firstAttribute="leading" secondItem="tox-03-Ocm" secondAttribute="trailing" constant="8" id="lJj-JK-gtT"/>
+                                                <constraint firstAttribute="bottom" secondItem="CsT-NI-qFx" secondAttribute="bottom" constant="8" id="o5t-FH-Xd2"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="tox-03-Ocm" secondAttribute="bottom" constant="8" id="pFo-ae-sfw"/>
+                                                <constraint firstAttribute="trailing" secondItem="CsT-NI-qFx" secondAttribute="trailing" constant="8" id="tLh-60-Hz1"/>
                                                 <constraint firstItem="tox-03-Ocm" firstAttribute="centerY" secondItem="bwp-nc-RZ3" secondAttribute="centerY" id="uNB-ai-Veh"/>
                                             </constraints>
                                         </tableViewCellContentView>
