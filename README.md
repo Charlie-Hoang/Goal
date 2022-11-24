@@ -10,7 +10,9 @@
 - Swift 5.0
 
 ## Tools & Framework
-- not using any framework because project too small and basic, so I just implemented by using default iOS Apis
+- not using any other framework than iOS sdk because project too small and basic, so I just implemented by using default iOS Apis
+- Networking using URLSession in iOS sdk
+- Highligh video player is using AVPlayerViewController in iOS sdk
 
 ## Application Architectural Pattern
 - MVVM: Separate business logic and UI implementation (Although there are not much business logic in this small app).
