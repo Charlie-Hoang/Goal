@@ -1,5 +1,9 @@
 # Goal
 
+<div align="center">
+<img src="https://github.com/Charlie-Hoang/Goal/blob/develop/imgs/img_1.png" width="207" height="368"/>  <img src="https://github.com/Charlie-Hoang/Goal/blob/develop/imgs/img_2.png" width="207" height="368"/> <img src="https://github.com/Charlie-Hoang/Goal/blob/develop/imgs/img_3.png" width="207" height="368"/>
+</div>
+
 ## Requirements 
 - iOS 11+
 - Xcode 13.4
