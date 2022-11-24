@@ -24,7 +24,7 @@ class MatchesVC: UIViewController {
         super.viewDidLoad()
         setupViewModel()
         
-        
+        tableView.separatorColor = .clear
     }
 
 }

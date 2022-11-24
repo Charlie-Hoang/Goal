@@ -28,8 +28,8 @@ class MatchCell: UITableViewCell {
         label2.text = model.date?.gToDate()?.gToDateString()
         label3.text = model.date?.gToDate()?.gToTimeString()
         highlightBtn.isHidden = model.highlights == nil
-        label0.textColor = .white
-        label1.textColor = .white
+        label0.textColor = .label
+        label1.textColor = .label
         if let _winner = model.winner{
             if _winner == label0.text{
                 label0.textColor = .green
